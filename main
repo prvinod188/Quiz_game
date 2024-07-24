@@ -1,0 +1,80 @@
+import tkinter as tk
+from tkinter import messagebox
+
+
+class QuizGame:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Quiz Game")
+        self.root.geometry("500x400")
+        self.root.configure(bg="#f0f0f0")
+
+        self.questions = [
+            {
+                "question": "What is the capital of France?",
+                "options": ["Paris", "London", "Rome", "Berlin"],
+                "answer": "Paris"
+            },
+            {
+                "question": "What is 2 + 2?",
+                "options": ["3", "4", "5", "6"],
+                "answer": "4"
+            },
+            {
+                "question": "What is the capital of Japan?",
+                "options": ["Beijing", "Seoul", "Tokyo", "Bangkok"],
+                "answer": "Tokyo"
+            }
+        ]
+        self.current_question_index = 0
+        self.score = 0
+        self.create_widgets()
+        self.display_question()
+
+    def create_widgets(self):
+        self.question_label = tk.Label(self.root, text="", wraplength=400, justify="left", bg="#f0f0f0", fg="#333333",
+                                       font=("Helvetica", 14))
+        self.question_label.pack(pady=20)
+
+        self.options = tk.StringVar()
+        self.option_buttons = []
+        for _ in range(4):
+            button = tk.Radiobutton(self.root, text="", variable=self.options, value="", indicatoron=0, width=20,
+                                    bg="#ffffff", fg="#000000", font=("Helvetica", 12), selectcolor="#cce5ff")
+            button.pack(pady=5)
+            self.option_buttons.append(button)
+
+        self.submit_button = tk.Button(self.root, text="Submit", command=self.check_answer, bg="#007bff", fg="#ffffff",
+                                       font=("Helvetica", 12))
+        self.submit_button.pack(pady=20)
+
+    def display_question(self):
+        question = self.questions[self.current_question_index]
+        self.question_label.config(text=question["question"])
+        for i, option in enumerate(question["options"]):
+            self.option_buttons[i].config(text=option, value=option)
+
+    def check_answer(self):
+        selected_option = self.options.get()
+        correct_answer = self.questions[self.current_question_index]["answer"]
+        if selected_option == correct_answer:
+            self.score += 1
+            messagebox.showinfo("Correct!", "Correct Answer!")
+        else:
+            messagebox.showinfo("Wrong!", f"Wrong Answer! The correct answer was {correct_answer}.")
+
+        self.current_question_index += 1
+        if self.current_question_index < len(self.questions):
+            self.display_question()
+        else:
+            self.show_final_score()
+
+    def show_final_score(self):
+        messagebox.showinfo("Final Score", f"Your final score is {self.score} out of {len(self.questions)}.")
+        self.root.quit()
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = QuizGame(root)
+    root.mainloop()
