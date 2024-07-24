@@ -39,7 +39,12 @@ Code Structure
 1. **Install the required dependencies**:
     Ensure you have Python installed. Tkinter is part of the standard Python library, so no additional installations are necessary.
 
-2. **Run the application**:
+![Screenshot (34)](https://github.com/user-attachments/assets/82ccfb77-3a9f-43c0-8f9c-e9700766bd50)
+![Screenshot (35)](https://github.com/user-attachments/assets/a7d94028-804a-48cc-a530-1e0fc4288c0f)
+![Screenshot (36)](https://github.com/user-attachments/assets/d0676559-751e-46ea-aa9a-5a1cfce32505)
+![Screenshot (37)](https://github.com/user-attachments/assets/49a94f3c-ad80-4065-82a5-90ff05cdfa60)
+
+3. **Run the application**:
     ```sh
     python quiz_game.py
     ```
@@ -67,9 +72,6 @@ self.questions = [
     }
 ]
 
---ScreenShots Results--
 
-![Screenshot (34)](https://github.com/user-attachments/assets/82ccfb77-3a9f-43c0-8f9c-e9700766bd50)
-![Screenshot (35)](https://github.com/user-attachments/assets/a7d94028-804a-48cc-a530-1e0fc4288c0f)
-![Screenshot (36)](https://github.com/user-attachments/assets/d0676559-751e-46ea-aa9a-5a1cfce32505)
-![Screenshot (37)](https://github.com/user-attachments/assets/49a94f3c-ad80-4065-82a5-90ff05cdfa60)
+
+
